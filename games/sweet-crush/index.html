@@ -68,6 +68,18 @@ animation:pulse 2s infinite;
 }
 @keyframes pulse{50%{transform:scale(1.08)}}
 
+
+.buttonGroup{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+.buttonGroup .startBtn{
+margin:0 !important;
+}
+
 </style>
 </head>
 <body>
@@ -104,7 +116,10 @@ text-shadow:none;
 </style>
 
 <p class="desc">Match 3 or more candies to earn points. Create amazing combos, level up, and beat your high score before time runs out!</p>
-   <button class="startBtn" onclick="startGame()">START GAME</button>
+   <div class="buttonGroup">
+<button class="startBtn" onclick="startGame()">START GAME</button>
+<button class="startBtn" onclick="showHowToPlay()">HOW TO PLAY</button>
+</div>
  </div>
 </div>
 
@@ -456,4 +471,36 @@ function startGame(){
 }
 
 </script>
-</body></html>
+
+<div id="howToPlayModal" style="position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:10000">
+ <div style="background:#1e293b;padding:24px;border-radius:20px;max-width:520px;color:white;text-align:left">
+  <h2 style="text-align:center">🍭 HOW TO PLAY</h2>
+  <ol style="line-height:1.8">
+   <li>Click a candy, then click an adjacent candy to swap them.</li>
+   <li>Match 3 or more identical candies in a horizontal or vertical line.</li>
+   <li>Matched candies will disappear and earn points.</li>
+   <li>New candies will fall to fill empty spaces.</li>
+   <li>Create combo chains to earn more points.</li>
+   <li>Reach the target score to complete the level.</li>
+   <li>Complete levels to gain extra time.</li>
+   <li>The game ends when the timer reaches 0.</li>
+  </ol>
+  <p style="text-align:center;margin-top:15px;font-weight:bold;color:#facc15">
+  Good luck! Reach the highest level and beat your high score! 🚀🏆
+  </p>
+  <div style="text-align:center">
+   <button class="startBtn" onclick="closeHowToPlay()">CLOSE</button>
+  </div>
+ </div>
+</div>
+
+<script>
+function showHowToPlay(){
+ document.getElementById('howToPlayModal').style.display='flex';
+}
+function closeHowToPlay(){
+ document.getElementById('howToPlayModal').style.display='none';
+}
+</script>
+</body>
+</html>
